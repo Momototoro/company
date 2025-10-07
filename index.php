@@ -22,10 +22,8 @@ function createTable(array $data): string
 
         $id = $dataSet['id'];
 
-        $html_string .= "<td><a href='./first_delete.php?id=$id'>Löschen</a></td>";
-        $html_string .= "</tr>";
-
         $html_string .= "<td><a href='./first_update.php?id=$id'>Bearbeiten</a></td>";
+        $html_string .= "<td><a href='./first_delete.php?id=$id'>Löschen</a></td>";
         $html_string .= "</tr>";
     }
     return $html_string;
@@ -43,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {
     ?>
     <head>
         <meta charset="UTF-8">
-        <title>Alexander</title>
+        <title>Momo</title>
         <link rel="stylesheet" href="my_style.css">
     </head>
     <div class="form-input">
