@@ -32,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {
         <input type="hidden" name="id" placeholder="ID" required>
         <input type="submit" value="Absenden">
     </form>
+
     </body>
     </html>
     <?php
