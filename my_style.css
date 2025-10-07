@@ -1,0 +1,170 @@
+/* Grundlayout */
+body {
+    margin: 0;
+    background-color: #a3ccda;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px;
+    background: #f8f7ba;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .06);
+}
+
+/* Überschriften und Links */
+h1 {
+    color: #000000;
+    margin: 0 0 16px;
+}
+a {
+    color: #000000;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* Bilder */
+.hero {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 16px 0;
+}
+
+/* Minimal-Styles für die Bild-Buttons (falls nicht schon in my_style.css) */
+/* Bild-Buttons als moderne Cards */
+.game-btn {
+    position: relative;
+    display: inline-block;
+    border: none;
+    background: transparent;
+    padding: 10px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+    /* Ausgangs-Schatten */
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+}
+
+/* Bild selbst leicht abrunden und sanft skalieren bei Hover */
+.game-btn img {
+    display: block;
+    height: auto;
+    border-radius: 10px;
+    transition: transform .22s ease;
+    will-change: transform;
+}
+
+/* dezenter Hintergrund und Lift-Effekt beim Hover */
+.game-btn:hover {
+    background-color: rgba(28, 110, 164, .08); /* sanfter Ton statt Vollfläche */
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0,0,0,.12);
+}
+
+/* Bild sanft vergrößern */
+.game-btn:hover img {
+    transform: scale(1.04);
+}
+
+/* Fokus für Tastatur: gut sichtbarer Outline-Ring */
+.game-btn:focus-visible {
+    outline: none;
+    box-shadow:
+            0 0 0 3px #fff,
+            0 0 0 6px #1C6EA4;
+}
+
+/* Optionaler Glow (dezent) via Pseudo-Element */
+.game-btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    box-shadow: 0 0 0 rgba(28,110,164,0);
+    transition: box-shadow .22s ease;
+    pointer-events: none;
+}
+.game-btn:hover::after {
+    box-shadow: 0 8px 32px rgba(28,110,164,.25);
+}
+
+/* Titel unter dem Bild (falls genutzt) kompakt halten */
+.game-btn h2 {
+    margin: 8px 0 0 0;
+    font-size: 16px;
+    text-align: center;
+    color: #000;
+}
+
+/* Bestehende Größenklassen weiter nutzen */
+.img-180 { width: 180px; }
+.img-150 { width: 150px; }
+
+
+/* Grundstil bleibt wie gehabt */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+thead th {
+    background-color: #333;
+    color: white;
+    padding: 8px;
+    text-align: left;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #bde3c3; /* helle Farbe für ungerade Zeilen */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f5d2d2; /* etwas dunklere Farbe für gerade Zeilen */
+}
+
+/* Hover-Effekt angepasst an .game-btn:hover */
+tbody tr {
+    transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+    position: relative; /* für Schatten */
+}
+
+tbody tr:hover {
+    background-color: rgba(28, 110, 164, 0.08); /* sanfter blauer Hintergrund */
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    z-index: 1; /* Schatten sichtbar über anderen Zeilen */
+}
+
+tbody td {
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+tfoot td {
+    padding: 8px;
+}
+table a {
+    color: blue; /* typische Linkfarbe */
+    text-decoration: underline; /* typische Link-Unterstreichung */
+}
+
+table a:hover {
+    color: darkblue; /* etwas dunkler beim Hover */
+    text-decoration: underline;
+}
+
+/* Definitionsliste */
+dl { margin: 16px 0; }
+dt { font-weight: 600; margin-top: 8px; }
+dd { margin: 0 0 8px 0; color: #444; }
+
+/* Bildgrößen für die Spiele-Icons (ersetzt inline width) */
+.img-180 { width: 180px; }
+.img-150 { width: 150px; }
+
+
