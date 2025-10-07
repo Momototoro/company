@@ -26,6 +26,7 @@ function createTable(array $data): string
         $html_string .= "<td><a href='./first_delete.php?id=$id'>Löschen</a></td>";
         $html_string .= "</tr>";
     }
+
     return $html_string;
 }
 
