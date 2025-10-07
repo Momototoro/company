@@ -68,7 +68,7 @@ function createTable(array $data, string $farbe_1 = 'blue', string $farbe_2 = 'r
                     gubergren, nob
                     sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
             </div>
-            <a href="index.php" target="_blank">First read page</a>
+            <a href="first_create.php" target="_blank">First read page</a>
         </div>
         <div>
             <div class="avatar">

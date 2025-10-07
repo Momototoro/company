@@ -39,7 +39,7 @@ $table_data = $statement->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 <h1>Mitarbeiter Übersicht</h1>
-<p><a href="index.php">Neuen Mitarbeiter anlegen</a></p>
+<p><a href="first_create.php">Neuen Mitarbeiter anlegen</a></p>
 <?php
 if ($table_data) {
     echo createTable($table_data);
