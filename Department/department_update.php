@@ -20,11 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $id = $_POST['id'];
     $name = $_POST['name'];
     $is_hiring = isset($_POST['is_hiring']) ? 1 : 0;
-    $sql = "UPDATE departments SET name = :name, is_hiring = :is_hiring WHERE id = :id";
+    $work_mode = $_POST['work_mode'];
+    $sql = "UPDATE departments SET name = :name, is_hiring = :is_hiring, work_mode = :work_mode WHERE id = :id";
     $statement = $conn->prepare($sql);
     $statement->bindParam(':name', $name);
     $statement->bindParam(':is_hiring', $is_hiring);
     $statement->bindParam(':id', $id);
+    $statement->bindParam(':work_mode', $work_mode);
     $statement->execute();
     header("Location: department_read.php");
     exit;
@@ -55,6 +57,18 @@ else {
             Department in hiring?
             <input type="checkbox" name="is_hiring" value="1" <?= $response['is_hiring'] ? 'checked' : '' ?>>
         </label>
+        <label>
+            Work mode:
+            <input type = "radio" name="work_mode" value="remote" <?= ($response['work_mode'] === 'remote') ? 'checked' : '' ?>>
+        </label><br>
+        <label>
+            Work mode:
+            <input type = "radio" name="work_mode" value="hybrid" <?= ($response['work_mode'] === 'hybrid') ? 'checked' : '' ?>>
+        </label><br>
+        <label>
+            Work mode:
+            <input type = "radio" name="work_mode" value="onsite" <?= ($response['work_mode'] === 'onsite') ? 'checked' : '' ?>>
+        </label><br>
         <input type="submit" value="Speichern">
     </form>
 </div>
