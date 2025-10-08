@@ -12,7 +12,12 @@ function createTable(array $data): string
     foreach ($data as $dataSet) {
         $html_string .= "<tr>";
         foreach ($dataSet as $key => $dataEntry) {
-            $html_string .= "<td>$dataEntry</td>";
+            if ($key === "is_hiring") {
+                $html_string .= "<td>" . ($dataEntry ? "Yes" : "No") . "</td>";
+            }
+            else {
+                $html_string .= "<td>$dataEntry</td>";
+            }
         }
         $id = $dataSet['id'];
         $html_string .= "<td><a href='department_update.php?id=$id'>Bearbeiten</a></td>";
@@ -34,11 +39,11 @@ $table_data = $statement->fetchAll(PDO::FETCH_ASSOC);
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Mitarbeiter Übersicht</title>
+    <title>Department Übersicht</title>
     <link rel="stylesheet" href="my_style.css">
 </head>
 <body>
-<h1>Mitarbeiter Übersicht</h1>
+<h1>Department Übersicht</h1>
 <p><a href="department_create.php">Neues Department anlegen</a></p>
 <?php
 if ($table_data) {

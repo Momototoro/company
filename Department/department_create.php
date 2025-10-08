@@ -3,8 +3,10 @@ $conn = new PDO("mysql:host=10.101.105.165;dbname=company", 'momo', 'momu1993');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
+    $is_hiring = isset($_POST['is_hiring']) ? 1 : 0;
     $statement = $conn->prepare("INSERT INTO departments (name) VALUES (:name)");
     $statement->bindParam(':name', $name);
+    $statement->bindParam(":is_hiring", $is_hiring, PDO::PARAM_BOOL);
     $statement->execute();
     header("Location: department_read.php");
     exit;
@@ -25,6 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label>
             First Name
             <input type="text" name="name" placeholder="Department Name" required>
+        </label><br>
+        <label>
+            Is Hiring:
+            <input type="checkbox" name="is_hiring" value="1">
         </label><br>
         <input type="submit" value="Absenden">
     </form>

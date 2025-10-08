@@ -18,15 +18,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
-    $fname = $_POST['name'];
-    $sql = "UPDATE depertments SET name = :name WHERE id = :id";
+    $name = $_POST['name'];
+    $is_hiring = isset($_POST['is_hiring']) ? 1 : 0;
+    $sql = "UPDATE departments SET name = :name, is_hiring = :is_hiring WHERE id = :id";
     $statement = $conn->prepare($sql);
-    $statement->bindParam(':name', $fname);
+    $statement->bindParam(':name', $name);
+    $statement->bindParam(':is_hiring', $is_hiring);
     $statement->bindParam(':id', $id);
     $statement->execute();
     header("Location: department_read.php");
     exit;
-} else {
+}
+else {
     header("Location: department_read.php");
     exit;
 }
@@ -45,9 +48,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     <form action="" method="post">
         <input type="hidden" name="id" value="<?=htmlspecialchars($response['id'])?>">
         <label>
-            First Name
+            Department Name
             <input type="text" name="name" required value="<?=htmlspecialchars($response['name'])?>">
         </label><br>
+        <label>
+            Department in hiring?
+            <input type="checkbox" name="is_hiring" value="1" <?= $response['is_hiring'] ? 'checked' : '' ?>>
+        </label>
         <input type="submit" value="Speichern">
     </form>
 </div>
