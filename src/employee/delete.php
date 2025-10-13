@@ -1,13 +1,7 @@
 <?php
-if (empty($_GET['id'])) {
-    header("Location: read.php");
-    exit;
-}
-$id = $_GET['id'];
-$conn = new PDO("mysql:host=10.101.105.165;dbname=company", 'momo', 'momu1993');
-$sql = 'DELETE FROM employees WHERE id = :id';
-$statement = $conn->prepare($sql);
-$statement->bindParam(':id', $id);
-$statement->execute();
-header("Location: read.php");
-exit;
+$conn = new PDO('mysql:host=localhost;dbname=company', 'momo', 'momu1993');
+$sql = 'DELETE FROM employees where id = :id';
+//$id = $_GET['id'];
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':id',$id);
+$stmt->execute();

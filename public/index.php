@@ -2,6 +2,7 @@
 require_once '../config/loader.php';
 
 
+
 $request = explode('/', $_SERVER["REQUEST_URI"]);
 
 $entity = $request[1] ?? null;
@@ -10,6 +11,7 @@ $id = $request[3] ?? null;
 
 if ($entity === "") {
     require_once '../view/index.php';
+
 } elseif ($entity === 'department' and $method === 'create') {
     require_once "../src/department/create.php";
 
@@ -18,8 +20,10 @@ if ($entity === "") {
 
 } elseif ($entity === 'department' and $method === 'delete') {
     require_once '../src/department/delete.php';
+
 } elseif ($entity === 'department' and $method === 'update') {
     require_once '../src/department/update.php';
+
 } elseif ($entity === 'employee' and $method === 'create') {
     require_once "../src/employee/create.php";
 
@@ -28,6 +32,7 @@ if ($entity === "") {
 
 } elseif ($entity === 'employee' and $method === 'delete') {
     require_once '../src/employee/delete.php';
+
 } elseif ($entity === 'employee' and $method === 'update') {
     require_once '../src/employee/update.php';
 } else {

@@ -1,51 +1,65 @@
 <?php
-function createTable(array $data): string
+function createTable(array $data, array|false $ueberschrifeten = false, string $farbe_1 = 'blue', string $farbe_2 = 'red'): string
 {
-    $html_string = "<table class='table'>";
-    $html_string .= "<tr>";
+    $string = "<table>";
+    $string .= "<tr>";
     foreach ($data[0] as $key => $value) {
-        $html_string .= "<th>$key</th>";
+        $string .= "<th>";
+        $string .= "$key";
+        $string .= "</th>";
     }
-    $html_string .= "<th>Bearbeiten</th><th>Löschen</th>";
-    $html_string .= "</tr>";
+    $string .= "</tr>";
 
-    foreach ($data as $dataSet) {
-        $html_string .= "<tr>";
-        foreach ($dataSet as $key => $dataEntry) {
-            $html_string .= "<td>$dataEntry</td>";
+
+    foreach ($data as $index => $user) {
+        if ($index % 2 == 0) {
+            $color = $farbe_1;
+        } else {
+            $color = $farbe_2;
         }
-        $id = $dataSet['id'];
-        $html_string .= "<td><a href='first_update.php?id=$id'>Bearbeiten</a></td>";
-        $html_string .= "<td><a href='first_delete.php?id=$id' onclick=\"return confirm('Wirklich löschen?');\">Löschen</a></td>";
-        $html_string .= "</tr>";
+        $string .= "<tr  style='background-color: $color'>";
+        foreach ($user as $item) {
+            $string .= "<td>";
+            $string .= $item;
+            $string .= "</td>";
+        }
+        $string .= "<td class='link' style='background-color: white'>";
+        $id = $user['id'];
+        $string .= "<a href='/employee/delete/$id'>Delete</a>";
+        $string .= "</td>";
+        $string .= "<td class='link' style='background-color: white'>";
+        $string .= "<a href='/employee/update/$id'>Update</a>";
+        $string .= "</td>";
+        $string .= "</tr>";
     }
-    $html_string .= "</table>";
-    return $html_string;
+    $string .= "</table>";
+    return $string;
 }
 
-$conn = new PDO("mysql:host=10.101.105.165;dbname=company", 'momo', 'momu1993');
+# Verbindung mit der Datenbank mit einem PDO Objekt
+$conn = new PDO('mysql:host=localhost;dbname=company', 'momo', 'momu1993');
+#Den Auszuführenden SQL Befehl
 $sql = 'SELECT * FROM employees';
-$statement = $conn->prepare($sql);
-$statement->execute();
-$table_data = $statement->fetchAll(PDO::FETCH_ASSOC);
+#Erstellen eines PDOStatement Objektes "SQL Boten" und übergabe des SQL-Befehls mithilfe des PDO Objektes
+$stmt = $conn->prepare($sql);
+# Ausführen des SQL-Befehls
+$stmt->execute();
+# Das Ergebnis des SQLs in form eines nummerischen Arrays (fetchAll) mit assoziativen Arrays als Elementen (PDO::FETCH_ASSOC)  in eine variable
+$array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
-<!DOCTYPE html>
-<html lang="de">
+
+<!doctype html>
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <title>Mitarbeiter Übersicht</title>
-    <link rel="stylesheet" href="my_style.css">
+    <meta charset='UTF-8'>
+    <meta name='viewport'
+          content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
 </head>
 <body>
-<h1>Mitarbeiter Übersicht</h1>
-<p><a href="create.php">Neuen Mitarbeiter anlegen</a></p>
-<?php
-if ($table_data) {
-    echo createTable($table_data);
-} else {
-    echo "<p>Keine Mitarbeiter gefunden.</p>";
-}
-?>
+<?= createTable($array) ?>
 </body>
 </html>

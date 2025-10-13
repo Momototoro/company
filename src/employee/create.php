@@ -1,40 +1,38 @@
 <?php
-$conn = new PDO("mysql:host=10.101.105.165;dbname=company", 'momo', 'momu1993');
+if ($_SERVER["REQUEST_METHOD"] === 'GET'){
+    ?>
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    <form action='' method='post'>
+        <input type='text' name='fname' placeholder='fname'>
+        <input type='text' name='lname' placeholder='lname'>
+        <input type='submit'>
+    </form>
+
+
+
+    </body>
+    </html>
+
+    <?php
+}elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
-    $statement = $conn->prepare("INSERT INTO employees (fname, lname) VALUES (:fname, :lname)");
-    $statement->bindParam(':fname', $fname);
-    $statement->bindParam(':lname', $lname);
-    $statement->execute();
-    header("Location: read.php");
-    exit;
+    $conn = dbcon();
+    $sql = "INSERT INTO employees (fname, lname) VALUES (:fname, :lname)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':fname',$fname);
+    $stmt->bindParam(':lname',$lname);
+    $stmt->execute();
+    echo 'Hier soll es in die DB';
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <title>Mitarbeiter hinzufügen</title>
-    <link rel="stylesheet" href="../my_style.css">
-</head>
-<body>
-<h1>Neuen Mitarbeiter anlegen</h1>
-<div class="form-input">
-    <form action="" method="post">
-        <label>
-            First Name
-            <input type="text" name="fname" placeholder="First name" required>
-        </label><br>
-        <label>
-            Last Name
-            <input type="text" name="lname" placeholder="Last name" required>
-        </label><br><br>
-        <input type="submit" value="Absenden">
-    </form>
-</div>
-<p><a href="read.php">Zur Übersicht</a></p>
-</body>
-</html>

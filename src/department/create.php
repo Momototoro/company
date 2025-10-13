@@ -1,54 +1,62 @@
 <?php
-$conn = new PDO("mysql:host=10.101.105.165;dbname=company", 'momo', 'momu1993');
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = $_POST['name'];
-    $is_hiring = isset($_POST['is_hiring']) ? 1 : 0;
-    $work_mode = $_POST['work_mode'];
-    $statement = $conn->prepare("INSERT INTO departments (name, is_hiring, work_mode) VALUES (:name, :is_hiring, :work_mode)");
-    $statement->bindParam(':name', $name);
-    $statement->bindParam(":is_hiring", $is_hiring, PDO::PARAM_BOOL);
-    $statement->bindParam(':work_mode', $work_mode, PDO::PARAM_STR);
-    $statement->execute();
-    header("Location: read.php");
-    exit;
-}
-?>
-
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <title>Department hinzufügen</title>
-    <link rel="stylesheet" href="my_style.css">
-</head>
-<body>
-<h1>Neues Department anlegen</h1>
-<div class="form-input">
-    <form action="" method="post">
-        <label>
-            Name:
-            <input type="text" name="name" placeholder="Department Name" required>
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    ?>
+    <!doctype html>
+    <html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport'
+              content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+        <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+        <title>Document</title>
+    </head>
+    <body>
+    <form action='' method='post'>
+        <label>Name:
+            <input type='text' name='name' value=''>
         </label><br>
-        <label>
-            Is Hiring:
-            <input type="checkbox" name="is_hiring" value="1">
+        <label>Hiring
+            <input type='checkbox' name='is_hiring' value='1'>
         </label><br>
-        <label>
-            Work mode:
-            <input type = "radio" name="work_mode" value="remote"> Remote
+        <label>OnSite
+            <input type='radio' name='work_mode' value='onsite' checked>
         </label><br>
-        <label>
-            Work mode:
-            <input type = "radio" name="work_mode" value="hybrid"> Hybrid
+        <label>Remote
+            <input type='radio' name='work_mode' value='remote'>
         </label><br>
-        <label>
-            Work mode:
-            <input type = "radio" name="work_mode" value="onsite"> Onsite
+        <label>Hybrid
+            <input type='radio' name='work_mode' value='hybrid'>
         </label><br>
-        <input type="submit" value="Absenden">
+        <input type='submit'>
     </form>
-</div>
-<p><a href="read.php">Zur Übersicht</a></p>
-</body>
-</html>
+    </body>
+    </html>
+    <?php
+} elseif ($_SERVER['REQUEST_METHOD']) {
+//
+//
+//    $name = $_POST['name'];
+//    $work_mode = $_POST['work_mode'] ?? false;
+//    $is_hiring = $_POST['is_hiring'] ?? 0;
+//    $conn = dbcon();
+//    $sql = "INSERT INTO department (name, is_hiring, work_mode) values (:name, :is_hiring, :work_mode)";
+//    $stmt = $conn->prepare($sql);
+//    $stmt->bindParam(':name', $name);
+//    $stmt->bindParam(':is_hiring', $is_hiring);
+//    $stmt->bindParam(':work_mode', $work_mode);
+//    $stmt->execute();
+
+
+
+
+
+
+
+
+    create('department',$_POST);
+    header("Location: ". DOMAIN_NAME. "/department/read");
+    exit();
+}
+
+
+?>

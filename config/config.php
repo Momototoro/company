@@ -2,5 +2,6 @@
 
 const DB_HOST = 'localhost';
 const DB_NAME = 'company';
-const DB_USER = 'phpstorm';
-const DB_PW = '123456';
+const DB_USER = 'momo';
+const DB_PW = 'momu1993';
+const DOMAIN_NAME = "www.company.moritz.web.bbq";
