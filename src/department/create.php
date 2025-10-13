@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $statement->bindParam(":is_hiring", $is_hiring, PDO::PARAM_BOOL);
     $statement->bindParam(':work_mode', $work_mode, PDO::PARAM_STR);
     $statement->execute();
-    header("Location: department_read.php");
+    header("Location: read.php");
     exit;
 }
 ?>
@@ -49,6 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="submit" value="Absenden">
     </form>
 </div>
-<p><a href="department_read.php">Zur Übersicht</a></p>
+<p><a href="read.php">Zur Übersicht</a></p>
 </body>
 </html>

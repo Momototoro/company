@@ -3,7 +3,7 @@ $conn = new PDO("mysql:host=10.101.105.165;dbname=company", 'momo', 'momu1993');
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (empty($_GET['id'])) {
-        header("Location: first_read.php");
+        header("Location: read.php");
         exit;
     }
     $id = $_GET['id'];
@@ -26,10 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $statement->bindParam(':lname', $lname);
     $statement->bindParam(':id', $id);
     $statement->execute();
-    header("Location: first_read.php");
+    header("Location: read.php");
     exit;
 } else {
-    header("Location: first_read.php");
+    header("Location: read.php");
     exit;
 }
 ?>
@@ -57,6 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         <input type="submit" value="Speichern">
     </form>
 </div>
-<p><a href="first_read.php">Zur Übersicht</a></p>
+<p><a href="read.php">Zur Übersicht</a></p>
 </body>
 </html>

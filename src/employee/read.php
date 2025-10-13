@@ -12,16 +12,11 @@ function createTable(array $data): string
     foreach ($data as $dataSet) {
         $html_string .= "<tr>";
         foreach ($dataSet as $key => $dataEntry) {
-            if ($key === "is_hiring") {
-                $html_string .= "<td>" . ($dataEntry ? "Yes" : "No") . "</td>";
-            }
-            else {
-                $html_string .= "<td>$dataEntry</td>";
-            }
+            $html_string .= "<td>$dataEntry</td>";
         }
         $id = $dataSet['id'];
-        $html_string .= "<td><a href='department_update.php?id=$id'>Bearbeiten</a></td>";
-        $html_string .= "<td><a href='department_delete.php?id=$id' onclick=\"return confirm('Wirklich löschen?');\">Löschen</a></td>";
+        $html_string .= "<td><a href='first_update.php?id=$id'>Bearbeiten</a></td>";
+        $html_string .= "<td><a href='first_delete.php?id=$id' onclick=\"return confirm('Wirklich löschen?');\">Löschen</a></td>";
         $html_string .= "</tr>";
     }
     $html_string .= "</table>";
@@ -29,7 +24,7 @@ function createTable(array $data): string
 }
 
 $conn = new PDO("mysql:host=10.101.105.165;dbname=company", 'momo', 'momu1993');
-$sql = 'SELECT * FROM departments';
+$sql = 'SELECT * FROM employees';
 $statement = $conn->prepare($sql);
 $statement->execute();
 $table_data = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -39,17 +34,17 @@ $table_data = $statement->fetchAll(PDO::FETCH_ASSOC);
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Department Übersicht</title>
+    <title>Mitarbeiter Übersicht</title>
     <link rel="stylesheet" href="my_style.css">
 </head>
 <body>
-<h1>Department Übersicht</h1>
-<p><a href="department_create.php">Neues Department anlegen</a></p>
+<h1>Mitarbeiter Übersicht</h1>
+<p><a href="create.php">Neuen Mitarbeiter anlegen</a></p>
 <?php
 if ($table_data) {
     echo createTable($table_data);
 } else {
-    echo "<p>Kein Department gefunden.</p>";
+    echo "<p>Keine Mitarbeiter gefunden.</p>";
 }
 ?>
 </body>

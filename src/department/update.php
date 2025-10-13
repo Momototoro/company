@@ -3,7 +3,7 @@ $conn = new PDO("mysql:host=10.101.105.165;dbname=company", 'momo', 'momu1993');
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (empty($_GET['id'])) {
-        header("Location: department_read.php");
+        header("Location: read.php");
         exit;
     }
     $id = $_GET['id'];
@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $statement->execute();
     $response = $statement->fetch(PDO::FETCH_ASSOC);
     if (!$response) {
-        echo "Department nicht gefunden!";
+        echo "department nicht gefunden!";
         exit;
     }
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -28,11 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $statement->bindParam(':id', $id);
     $statement->bindParam(':work_mode', $work_mode);
     $statement->execute();
-    header("Location: department_read.php");
+    header("Location: read.php");
     exit;
 }
 else {
-    header("Location: department_read.php");
+    header("Location: read.php");
     exit;
 }
 ?>
@@ -72,6 +72,6 @@ else {
         <input type="submit" value="Speichern">
     </form>
 </div>
-<p><a href="department_read.php">Zur Übersicht</a></p>
+<p><a href="read.php">Zur Übersicht</a></p>
 </body>
 </html>

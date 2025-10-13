@@ -1,6 +1,6 @@
 <?php
 if (empty($_GET['id'])) {
-    header("Location: department_read.php");
+    header("Location: read.php");
     exit;
 }
 $id = $_GET['id'];
@@ -9,5 +9,5 @@ $sql = 'DELETE FROM departments WHERE id = :id';
 $statement = $conn->prepare($sql);
 $statement->bindParam(':id', $id);
 $statement->execute();
-header("Location: department_read.php");
+header("Location: read.php");
 exit;
