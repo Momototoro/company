@@ -2,12 +2,8 @@
 
 if ($_SERVER["REQUEST_METHOD"] === 'GET') {
 //    $id = $_GET['id'];
-    $conn = new PDO('mysql:host=localhost;dbname=company', 'momo', 'momu1993');
-    $sql = 'Select * from employees where id = :id';
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $result = findById($id,'employees');
     $fname = $result['fname'];
     $lname = $result['lname'];
     $id = $result['id'];
@@ -32,15 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {
 </form>
     <?php
 }elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-//    $id = $_POST['id'];
-    $conn = new PDO('mysql:host=localhost;dbname=company','momo','momu1993');
-    $sql = "UPDATE  employees set fname = :fname , lname = :lname where id = :id";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':fname',$fname);
-    $stmt->bindParam(':lname',$lname);
-    $stmt->bindParam(':id',$id);
-    $stmt->execute();
+    update('employees',$_POST);
+    header("Location: ". DOMAIN_NAME. '/employee/read');
+    exit();
 }
 ?>

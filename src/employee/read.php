@@ -36,16 +36,9 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
     return $string;
 }
 
-# Verbindung mit der Datenbank mit einem PDO Objekt
-$conn = new PDO('mysql:host=localhost;dbname=company', 'momo', 'momu1993');
-#Den Auszuführenden SQL Befehl
-$sql = 'SELECT * FROM employees';
-#Erstellen eines PDOStatement Objektes "SQL Boten" und übergabe des SQL-Befehls mithilfe des PDO Objektes
-$stmt = $conn->prepare($sql);
-# Ausführen des SQL-Befehls
-$stmt->execute();
+
 # Das Ergebnis des SQLs in form eines nummerischen Arrays (fetchAll) mit assoziativen Arrays als Elementen (PDO::FETCH_ASSOC)  in eine variable
-$array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$array = findAll('employees')
 
 ?>
 

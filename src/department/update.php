@@ -1,8 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'GET'){
 
-    $result = findById($id, "department");
-
+    $result = findById($id,'department');
     if ($result['is_hiring']){
         $checked = 'checked';
     }else{
@@ -51,12 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET'){
 }elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     update('department',$_POST);
-    header('Location: /department/read');
+    header("Location: ". DOMAIN_NAME. '/department/read');
     exit();
 }
 
-
-$stamp = new DateTime('now');
-
-
 ?>
+

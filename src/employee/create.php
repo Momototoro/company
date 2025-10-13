@@ -25,14 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET'){
 
     <?php
 }elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $conn = dbcon();
-    $sql = "INSERT INTO employees (fname, lname) VALUES (:fname, :lname)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':fname',$fname);
-    $stmt->bindParam(':lname',$lname);
-    $stmt->execute();
-    echo 'Hier soll es in die DB';
+    create('employees',$_POST);
+    header("Location: ". DOMAIN_NAME. '/employee/read');
+    exit();
 }
 ?>

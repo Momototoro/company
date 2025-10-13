@@ -89,8 +89,8 @@ function update(string $tablename, array $data): bool
 
     change_data($column, $data);
 
-    $stmt->execute($data);
-    return true;
+
+    return $stmt->execute($data);
 }
 
 function get_column(string $tablename, PDO $conn): array
@@ -102,15 +102,13 @@ function get_column(string $tablename, PDO $conn): array
     return $column;
 }
 
-function change_data(array $column, array &$data)
+function change_data(array $column, array &$data):void
 {
     $array_diff = array_diff($column,array_keys($data));
-
     foreach ($array_diff as $missing){
         if ($missing === 'id'){
             continue;
         }
         $data[$missing]= 0;
     }
-
 }

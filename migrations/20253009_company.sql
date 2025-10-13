@@ -23,7 +23,7 @@ create table department
 INSERT INTO department( name)
 values ('department'),
        ('dep'),
-       ('artment');
+       ('department');
 
 
 ALTER TABLE department add column is_hiring bool default '0';

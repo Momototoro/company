@@ -45,15 +45,9 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
 }
 
 # Verbindung mit der Datenbank mit einem PDO Objekt
-$conn = new PDO('mysql:host=localhost;dbname=company', 'momo', 'momu1993');
-#Den Auszuführenden SQL Befehl
-$sql = 'SELECT * FROM department';
-#Erstellen eines PDOStatement Objektes "SQL Boten" und übergabe des SQL-Befehls mithilfe des PDO Objektes
-$stmt = $conn->prepare($sql);
-# Ausführen des SQL-Befehls
-$stmt->execute();
+
 # Das Ergebnis des SQLs in form eines nummerischen Arrays (fetchAll) mit assoziativen Arrays als Elementen (PDO::FETCH_ASSOC)  in eine variable
-$array = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$array = findAll('department');
 //echo "<pre>";
 //var_dump($_SERVER);
 //echo "</pre>";
@@ -69,7 +63,7 @@ $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name='viewport'
           content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
     <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-    <!--    <link rel='stylesheet' href='../assets/css/mystyle.css'>-->
+<!--    <link rel='stylesheet' href='../assets/css/mystyle.css'>-->
     <link rel='stylesheet' href='http://www.company.moritz.web.bbq/assets/css/mystyle.css'>
     <title>Document</title>
 </head>

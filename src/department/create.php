@@ -33,30 +33,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     </html>
     <?php
 } elseif ($_SERVER['REQUEST_METHOD']) {
-//
-//
-//    $name = $_POST['name'];
-//    $work_mode = $_POST['work_mode'] ?? false;
-//    $is_hiring = $_POST['is_hiring'] ?? 0;
-//    $conn = dbcon();
-//    $sql = "INSERT INTO department (name, is_hiring, work_mode) values (:name, :is_hiring, :work_mode)";
-//    $stmt = $conn->prepare($sql);
-//    $stmt->bindParam(':name', $name);
-//    $stmt->bindParam(':is_hiring', $is_hiring);
-//    $stmt->bindParam(':work_mode', $work_mode);
-//    $stmt->execute();
-
-
-
-
-
-
-
 
     create('department',$_POST);
-    header("Location: ". DOMAIN_NAME. "/department/read");
+    header("Location: ". DOMAIN_NAME. '/department/read');
+    // TODO  wir wollen zu den neuen eintrag
     exit();
 }
 
 
 ?>
+
+
+
