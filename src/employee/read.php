@@ -1,5 +1,5 @@
 <?php
-function createTable(array $data, array|false $ueberschrifeten = false, string $farbe_1 = 'blue', string $farbe_2 = 'red'): string
+function createTable(array $data, array|false $ueberschrifeten = false, string $farbe_1 = 'F5D2D2', string $farbe_2 = 'BDE3C3'): string
 {
     $string = "<table>";
     $string .= "<tr>";
@@ -17,20 +17,21 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
         } else {
             $color = $farbe_2;
         }
-        $string .= "<tr  style='background-color: $color'>";
+        $id = $user['id'];
+        $string .= "<tr style='background-color: $color; cursor: pointer;' onclick=\"window.location='/employee/detail/$id'\">";
         foreach ($user as $item) {
             $string .= "<td>";
             $string .= $item;
             $string .= "</td>";
         }
-        $string .= "<td class='link' style='background-color: white'>";
-        $id = $user['id'];
-        $string .= "<a href='/employee/delete/$id'>Delete</a>";
-        $string .= "</td>";
-        $string .= "<td class='link' style='background-color: white'>";
-        $string .= "<a href='/employee/update/$id'>Update</a>";
-        $string .= "</td>";
-        $string .= "</tr>";
+//        $string .= "<td class='link'>";
+//        $id = $user['id'];
+//        $string .= "<a href='/employee/delete/$id'>Delete</a>";
+//        $string .= "</td>";
+//        $string .= "<td class='link'>";
+//        $string .= "<a href='/employee/update/$id'>Update</a>";
+//        $string .= "</td>";
+//        $string .= "</tr>";
     }
     $string .= "</table>";
     return $string;
@@ -50,9 +51,12 @@ $array = findAll('employees')
     <meta name='viewport'
           content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
     <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <link rel='stylesheet' href='http://www.company.moritz.web.bbq/assets/css/mystyle.css'>
     <title>Document</title>
 </head>
 <body>
 <?= createTable($array) ?>
+<br>
+<a href="http://www.company.moritz.web.bbq/">Zurück zur Übersicht</a>
 </body>
 </html>

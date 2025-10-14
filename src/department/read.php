@@ -1,5 +1,5 @@
 <?php
-function createTable(array $data, array|false $ueberschrifeten = false, string $farbe_1 = 'blue', string $farbe_2 = 'red'): string
+function createTable(array $data, array|false $ueberschrifeten = false, string $farbe_1 = 'F5D2D2', string $farbe_2 = 'BDE3C3'): string
 {
     $string = "<table>";
     $string .= "<tr>";
@@ -17,7 +17,8 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
         } else {
             $color = $farbe_2;
         }
-        $string .= "<tr  style='background-color: $color'>";
+        $id = $user['id'];
+        $string .= "<tr style='background-color: $color; cursor: pointer;' onclick=\"window.location='/department/detail/$id'\">";
         foreach ($user as $key => $item) {
             $string .= "<td>";
             if ($key === 'is_hiring') {
@@ -31,14 +32,14 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
             }
             $string .= "</td>";
         }
-        $string .= "<td class='link' style='background-color: white'>";
-        $id = $user['id'];
-        $string .= "<a href='/department/delete/$id'>Delete</a>";
-        $string .= "</td>";
-        $string .= "<td class='link' style='background-color: white'>";
-        $string .= "<a href='/department/update/$id'>Update</a>";
-        $string .= "</td>";
-        $string .= "</tr>";
+//        $string .= "<td>";
+//        $id = $user['id'];
+//        $string .= "<a href='/department/delete/$id'>Delete</a>";
+//        $string .= "</td>";
+//        $string .= "<td class='link'>";
+//        $string .= "<a href='/department/update/$id'>Update</a>";
+//        $string .= "</td>";
+//        $string .= "</tr>";
     }
     $string .= "</table>";
     return $string;
@@ -51,7 +52,7 @@ $array = findAll('department');
 //echo "<pre>";
 //var_dump($_SERVER);
 //echo "</pre>";
-
+var_dump(findById(1, 'employees'));
 
 ?>
 
@@ -69,5 +70,7 @@ $array = findAll('department');
 </head>
 <body>
 <?= createTable($array) ?>
+<br>
+<a href="http://www.company.moritz.web.bbq/">Zurück zur Übersicht</a>
 </body>
 </html>

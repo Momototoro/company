@@ -24,6 +24,9 @@ if ($entity === "") {
 } elseif ($entity === 'department' and $method === 'update') {
     require_once '../src/department/update.php';
 
+} elseif ($entity === 'department' and $method === 'detail') {
+    require_once '../src/department/detail.php';
+
 } elseif ($entity === 'employee' and $method === 'create') {
     require_once "../src/employee/create.php";
 
@@ -35,6 +38,9 @@ if ($entity === "") {
 
 } elseif ($entity === 'employee' and $method === 'update') {
     require_once '../src/employee/update.php';
+
+} elseif ($entity === 'employee' and $method === 'detail') {
+    require_once '../src/employee/detail.php';
 } else {
     http_response_code(404);
     require_once '../view/404.html';
