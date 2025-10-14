@@ -1,5 +1,5 @@
 <?php
-$employee = findById($id, 'department');
+$employee = findById($id, 'employees');
 
 ?>
 
@@ -18,11 +18,11 @@ $employee = findById($id, 'department');
     <li>Name: <?= htmlspecialchars($employee['fname']) ?></li>
     <li>Name: <?= htmlspecialchars($employee['lname']) ?></li>
 </ul>
-<a href="/department/delete/<?= $employee['id'] ?>">Delete</a>
+<a href="/employee/delete/<?= $employee['id'] ?>">Delete</a>
 <br>
-<a href="/department/update/<?=$employee['id'] ?>">Update</a>
+<a href="/employee/update/<?=$employee['id'] ?>">Update</a>
 <br><br>
-<a href="/department/read">Zurück zur Übersicht</a>
+<a href="/employee/read">Zurück zur Übersicht</a>
 
 </body>
 </html>

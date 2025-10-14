@@ -66,7 +66,8 @@ function create(string $tablename, array $data)  // ['name' => 'bob']
     }
 //    var_dump($array_diff);
     $stmt = $conn->prepare($sql);
-    return $stmt->execute($data);
+    $stmt->execute($data);
+    return (int)$conn->lastInsertId();
 
 }
 
@@ -111,4 +112,9 @@ function change_data(array $column, array &$data):void
         }
         $data[$missing]= 0;
     }
+}
+function get_last_id(string $tablename):int {
+    $conn = dbcon();
+    $last_id = $conn->lastInsertId();
+    return $last_id;
 }

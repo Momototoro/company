@@ -35,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     <?php
 } elseif ($_SERVER['REQUEST_METHOD']) {
 
-    create('department',$_POST);
-    header("Location: ". DOMAIN_NAME. '/department/read');
+    $last_id = create('department',$_POST);
+    header("Location: ". DOMAIN_NAME. "/department/detail/$last_id");
     // TODO  wir wollen zu den neuen eintrag
     exit();
 }

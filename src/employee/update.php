@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET') {
     <?php
 }elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
     update('employees',$_POST);
-    header("Location: ". DOMAIN_NAME. '/employee/read');
+    header("Location: ". DOMAIN_NAME. '/employee/detail/$_POST[id]');
     exit();
 }
 ?>

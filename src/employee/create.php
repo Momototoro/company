@@ -26,8 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] === 'GET'){
 
     <?php
 }elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    create('employees',$_POST);
-    header("Location: ". DOMAIN_NAME. '/employee/read');
+    $last_id = create('employees',$_POST);
+    header("Location: ". DOMAIN_NAME. "/employee/detail/$last_id");
     exit();
 }
 ?>

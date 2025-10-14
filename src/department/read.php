@@ -52,7 +52,7 @@ $array = findAll('department');
 //echo "<pre>";
 //var_dump($_SERVER);
 //echo "</pre>";
-var_dump(findById(1, 'employees'));
+//var_dump(findById(1, 'department'));
 
 ?>
 

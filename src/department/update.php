@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET'){
 }elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     update('department',$_POST);
-    header("Location: ". DOMAIN_NAME. '/department/read');
+    header("Location: ". DOMAIN_NAME. "/department/detail/$_POST[id]");
     exit();
 }
 
