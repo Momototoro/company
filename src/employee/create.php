@@ -1,31 +1,8 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] === 'GET'){
-    ?>
-    <!doctype html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel='stylesheet' href='http://www.company.moritz.web.bbq/assets/css/mystyle.css'>
-        <title>Document</title>
-    </head>
-    <body>
-
-    <form action='' method='post'>
-        <input type='text' name='fname' placeholder='fname'>
-        <input type='text' name='lname' placeholder='lname'>
-        <input type='submit'>
-    </form>
-
-
-
-    </body>
-    </html>
-
-    <?php
-}elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    require_once "../view/employee/create.html";
+}
+elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $last_id = create('employees',$_POST);
     header("Location: ". DOMAIN_NAME. "/employee/detail/$last_id");
     exit();

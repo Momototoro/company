@@ -1,36 +1,12 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] === 'GET') {
-//    $id = $_GET['id'];
 
-    $result = findById($id,'employees');
-    $fname = $result['fname'];
-    $lname = $result['lname'];
-    $id = $result['id'];
-    ?>
-
-    <!doctype html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel='stylesheet' href='http://www.company.moritz.web.bbq/assets/css/mystyle.css'>
-        <title>Document</title>
-    </head>
-<body>
-
-<form action='' method='post'>
-    <input type='text' name='fname' placeholder='fname' value='<?= $fname ?>'>
-    <input type='text' name='lname' placeholder='lname' value='<?= $lname?>'>
-    <input type='hidden' name='id' value='<?= $id ?>'>
-    <input type='submit'>
-</form>
-    <?php
+    $data = findById($id,'employees');
+    require_once "../view/employee/update.php";
 }elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
     update('employees',$_POST);
-    header("Location: ". DOMAIN_NAME. '/employee/detail/$_POST[id]');
+    header("Location: ". DOMAIN_NAME. "/employee/detail/$_POST[id]");
     exit();
 }
 ?>

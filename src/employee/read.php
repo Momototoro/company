@@ -24,14 +24,6 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
             $string .= $item;
             $string .= "</td>";
         }
-//        $string .= "<td class='link'>";
-//        $id = $user['id'];
-//        $string .= "<a href='/employee/delete/$id'>Delete</a>";
-//        $string .= "</td>";
-//        $string .= "<td class='link'>";
-//        $string .= "<a href='/employee/update/$id'>Update</a>";
-//        $string .= "</td>";
-//        $string .= "</tr>";
     }
     $string .= "</table>";
     return $string;
@@ -39,24 +31,9 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
 
 
 # Das Ergebnis des SQLs in form eines nummerischen Arrays (fetchAll) mit assoziativen Arrays als Elementen (PDO::FETCH_ASSOC)  in eine variable
-$array = findAll('employees')
+$data = findAll('employees');
 
+require_once "../view/employee/read.php";
 ?>
 
 
-<!doctype html>
-<html lang='en'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport'
-          content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
-    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-    <link rel='stylesheet' href='http://www.company.moritz.web.bbq/assets/css/mystyle.css'>
-    <title>Document</title>
-</head>
-<body>
-<?= createTable($array) ?>
-<br>
-<a href="http://www.company.moritz.web.bbq/">Zurück zur Übersicht</a>
-</body>
-</html>
