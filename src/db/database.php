@@ -93,16 +93,6 @@ function update(string $tablename, array $data): bool
 
     return $stmt->execute($data);
 }
-
-function get_column(string $tablename, PDO $conn): array
-{
-//    $conn = dbcon();
-    $stmt = $conn->prepare("DESCRIBE $tablename");
-    $stmt->execute();
-    $column = $stmt->fetchAll(PDO::FETCH_COLUMN);
-    return $column;
-}
-
 function change_data(array $column, array &$data):void
 {
     $array_diff = array_diff($column,array_keys($data));
@@ -113,8 +103,12 @@ function change_data(array $column, array &$data):void
         $data[$missing]= 0;
     }
 }
-function get_last_id(string $tablename):int {
-    $conn = dbcon();
-    $last_id = $conn->lastInsertId();
-    return $last_id;
+
+function get_column(string $tablename, PDO $conn): array
+{
+//    $conn = dbcon();
+    $stmt = $conn->prepare("DESCRIBE $tablename");
+    $stmt->execute();
+    $column = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    return $column;
 }

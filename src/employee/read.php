@@ -18,7 +18,7 @@ function createTable(array $data, array|false $ueberschrifeten = false, string $
             $color = $farbe_2;
         }
         $id = $user['id'];
-        $string .= "<tr style='background-color: $color; cursor: pointer;' onclick=\"window.location='/employee/detail/$id'\">";
+        $string .= "<tr style='cursor: pointer;' onclick=\"window.location='/employee/detail/$id'\">";
         foreach ($user as $item) {
             $string .= "<td>";
             $string .= $item;
