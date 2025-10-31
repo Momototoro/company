@@ -6,10 +6,6 @@ function dbcon(string $host = DB_HOST, string $dbname = DB_NAME, string $dbuser 
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $dbuser, $dbpass);
     return $conn;
 }
-
-/**
- * @return array[]
- */
 function findAll(string $tablename): array
 {
     $conn = dbcon();

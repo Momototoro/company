@@ -2,7 +2,8 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    require_once "../view/department/create.html";
+//    require_once "../view/department/create_view.php";
+    echo render("department_create_view");
     exit;
 }
 elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {

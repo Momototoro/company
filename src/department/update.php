@@ -1,14 +1,18 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 if ($_SERVER['REQUEST_METHOD'] === 'GET'){
-
     $data = findById($id,'department');
     if ($data['is_hiring']){
-        $checked = 'checked';
+        $data["checked"] = 'checked';
     }else{
-        $checked = '';
+        $data["checked"] = '';
     }
     $work_mode = $data['work_mode'];
-    require_once "../view/department/update.php";
+
+//    require_once "../view/department/update_view.php";
+    echo render("department_update_view", $data);
 }
 elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
 

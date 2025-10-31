@@ -10,7 +10,11 @@ form {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
-
+.logo-image {
+    width: 20px;   /* smaller width */
+    height: 20px;  /* smaller height */
+    margin-right: 10px; /* optional spacing */
+}
 /* Container */
 .container {
     max-width: 900px;

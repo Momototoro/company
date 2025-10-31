@@ -1,8 +1,7 @@
 <?php
-?>
 
-
-<!doctype html>
+function render(callable $content, array $data = []):string {
+    return "<!doctype html>
 <html lang='en'>
 <head>
     <meta charset='UTF-8'>
@@ -13,13 +12,13 @@
     <title>Document</title>
 </head>
 <body>
-<header class="site-header">
-    <div class="logo-container">
-        <a href="http://www.company.moritz.web.bbq/" rel="noopener" class="logo-link">
-            <img src="/assets/images/logo.png" alt="Firmenlogo" class="logo-image">
-            <h1 class="site-title">Deine Firma</h1>
-        </a>
-    </div>
+<header class='site-header'>
+  <div class='logo-container'>
+    <a href='http://www.company.moritz.web.bbq/' rel='noopener' class='logo-link'>
+      <img src='/assets/images/logo.png' alt='Firmenlogo' class='logo-image'>
+      <h1 class='site-title'>Deine Firma</h1>
+    </a>
+  </div>
 </header>
 <div>
     <div>Department</div>
@@ -39,7 +38,10 @@
 
     </ul>
 </div>
-</div>
+<div>". $content($data) . "
 
+
+</div>
 </body>
-</html>
+</html>";
+}

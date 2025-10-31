@@ -1,0 +1,51 @@
+#networks:
+#  webnet:
+#    driver: bridge
+#    ipam:
+#      config:
+#        - subnet: 10.101.105.0/24
+services:
+#  bind9:
+#    build: bind9/.
+#    container_name: bind9
+#    ports:
+#      - "30053:53/udp"
+#      - "30053:53/tcp"
+#    networks:
+#      webnet:
+#        ipv4_address: 10.101.105.165
+#  apache:
+#    build: apache/.
+#    container_name: apache
+#    ports:
+#      - "80:80"
+#    volumes:
+#      - ../:/var/www/company
+#    networks:
+#      webnet:
+#        ipv4_address: 10.101.105.165
+#    dns:
+#      - 10.101.105.165
+
+  mariadb_company:
+    image: mariadb:latest
+    container_name: mariadb_company
+    environment:
+      MYSQL_ROOT_PASSWORD: nein
+      MYSQL_DATABASE: company
+      MYSQL_USER: phpstorm
+      MYSQL_PASSWORD: 123456
+    ports:
+      - "3307:3306"
+    restart: always
+    volumes:
+      - mariadb_company_data:/var/lib/mysql
+#  adminer:
+#    image: adminer:latest
+#    restart: always
+#    ports:
+#      - "8081:8080"
+
+
+volumes:
+  mariadb_company_data:

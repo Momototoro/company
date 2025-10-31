@@ -1,15 +1,7 @@
-<!doctype html>
-<html lang='en'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport'
-          content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
-    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-    <link rel='stylesheet' href='http://www.company.moritz.web.bbq/assets/css/mystyle.css'>
-    <title>Document</title>
-</head>
-<body>
-<form action='' method='post'>
+
+<?php
+function department_create_view(array $data = []){
+    return "<form action='' method='post'>
     <label>Name:
         <input type='text' name='name' value=''>
     </label><br>
@@ -26,6 +18,5 @@
         <input type='radio' name='work_mode' value='hybrid'>
     </label><br>
     <input type='submit'>
-</form>
-</body>
-</html>
+</form>";
+}

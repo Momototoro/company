@@ -1,6 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] === 'GET'){
-    require_once "../view/employee/create.html";
+//    require_once "../view/employee/create_view.php";
+    echo render("department_create_view");
 }
 elseif ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $last_id = create('employees',$_POST);
